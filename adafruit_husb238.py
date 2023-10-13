@@ -21,8 +21,7 @@ Implementation Notes
 
 **Hardware:**
 
-* `Adafruit USB Type C Power Delivery Dummy Breakout - HUSB238
-  <https://www.adafruit.com/product/5807>`_"
+* `Adafruit USB Type C PD Breakout - HUSB238 <https://www.adafruit.com/product/5807>`_"
 
 **Software and Dependencies:**
 
