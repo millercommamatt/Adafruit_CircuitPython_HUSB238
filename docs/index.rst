@@ -24,14 +24,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
-.. todo:: Add any Learn guide links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit HUSB238 USB Type C Power Delivery Breakout Learn Guide <https://learn.adafruit.com/adafruit-husb238-usb-type-c-power-delivery-breakout>
 
 .. toctree::
     :caption: Related Products
 
-.. todo:: Add any product links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit HUSB238 USB Type C Power Delivery Breakout <https://www.adafruit.com/product/5807>
 
 .. toctree::
     :caption: Other Links

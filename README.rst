@@ -97,7 +97,8 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: python
+.. code-block:: python
+
     import time
     import board
     import adafruit_husb238
