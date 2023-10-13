@@ -100,12 +100,12 @@ Usage Example
 .. todo:: python
     import time
     import board
-    import adafruit_husb328
+    import adafruit_husb238
 
     i2c = board.I2C()
 
     # Initialize HUSB238
-    pd = adafruit_husb328.Adafruit_HUSB238(i2c)
+    pd = adafruit_husb238.Adafruit_HUSB238(i2c)
     voltages = pd.available_voltages()
 
     v = 0
