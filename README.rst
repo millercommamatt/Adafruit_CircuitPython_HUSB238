@@ -39,18 +39,14 @@ or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.
 
 
+The HUSB238 USB PD sink chip is neat in that you can either use jumpers (really, resistor selection) to set the desired power delivery voltage and current or you can use I2C for dynamic querying and setting.
 
-.. todo:: Describe the Adafruit product this library works with. For PCBs, you can also add the
-image from the assets folder in the PCB's GitHub repo.
+We've built a nice Adafruit USB Type C Power Delivery Dummy Breakout board around the HUSB238 to make it very easy to configure and integrate without having to solder any tiny resistors.
 
 `Purchase one from the Adafruit shop <http://www.adafruit.com/products/5807>`_
 
 Installing from PyPI
 =====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/adafruit-circuitpython-husb238/>`_.
@@ -101,8 +97,32 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. todo:: python
+    import time
+    import board
+    import adafruit_husb328
+
+    i2c = board.I2C()
+
+    # Initialize HUSB238
+    pd = adafruit_husb328.Adafruit_HUSB238(i2c)
+    voltages = pd.available_voltages()
+
+    v = 0
+
+    while True:
+        if pd.is_attached():
+            print(f"Setting to {voltages[v]}V!")
+            pd.value = voltages[v]
+            pd.set_value()
+            current = pd.read_current()
+            volts = pd.read_voltage()
+            response = pd.get_response()
+            print(f"The PD chip returned a response of: {response}")
+            print(f"It is set to {volts}V/{current}")
+            print()
+            v = (v + 1) % len(voltages)
+            time.sleep(2)
 
 Documentation
 =============
