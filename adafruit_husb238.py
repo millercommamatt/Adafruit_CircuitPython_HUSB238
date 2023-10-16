@@ -184,6 +184,7 @@ class Adafruit_HUSB238:
 
         return _available_voltages
 
+    @property
     def get_5v_contract_amps(self) -> int:
         """
         Reads the 5V contract current from the HUSB238 device.
@@ -197,6 +198,7 @@ class Adafruit_HUSB238:
         amps = self.contract_a_5v
         return amps
 
+    @property
     def get_5v_contract_volts(self) -> bool:
         """
         Reads the 5V contract voltage status from the HUSB238 device.
@@ -211,6 +213,7 @@ class Adafruit_HUSB238:
         volts = self.contract_v_5v
         return volts
 
+    @property
     def get_cc_direction(self) -> bool:
         """
         Reads the CC direction from the HUSB238 device.
@@ -228,6 +231,7 @@ class Adafruit_HUSB238:
             print("CC1 connected")
         return direction
 
+    @property
     def get_response(self) -> str:
         """
         Reads the PD response from the HUSB238 device.
@@ -241,6 +245,7 @@ class Adafruit_HUSB238:
         pd_msg = self.PDO_RESPONSE_CODES[self.pd_response]
         return pd_msg
 
+    @property
     def get_source_capabilities(self) -> int:
         """
         Retrieves the source capabilities of the HUSB238 device.
@@ -254,6 +259,7 @@ class Adafruit_HUSB238:
         time.sleep(0.01)  # 10 milliseconds delay
         return self._src_pdo
 
+    @property
     def is_attached(self) -> bool:
         """
         Reads the attachment status from the HUSB238 device.
@@ -268,6 +274,7 @@ class Adafruit_HUSB238:
         status = self.attachment_status
         return status
 
+    @property
     def read_current(self) -> typing.Union[int, str]:
         """
         Reads the source current from the HUSB238 device.
@@ -285,6 +292,7 @@ class Adafruit_HUSB238:
             pdo_value = "Unable to read current"
         return pdo_value
 
+    @property
     def read_voltage(self) -> typing.Union[int, str]:
         """
         Reads the source voltage from the HUSB238 device.

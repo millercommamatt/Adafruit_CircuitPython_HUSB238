@@ -19,13 +19,13 @@ voltages = pd.available_voltages()
 v = 0
 
 while True:
-    if pd.is_attached():
+    if pd.is_attached:
         print(f"Setting to {voltages[v]}V!")
         pd.value = voltages[v]
         pd.set_value()
-        current = pd.read_current()
-        volts = pd.read_voltage()
-        response = pd.get_response()
+        current = pd.read_current
+        volts = pd.read_voltage
+        response = pd.get_response
         print(f"The PD chip returned a response of: {response}")
         print(f"It is set to {volts}V/{current}")
         print()
