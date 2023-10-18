@@ -110,7 +110,7 @@ class Adafruit_HUSB238:
     }
     # PDO to voltage mapping
     _PDO_TO_VOLTAGE = [
-        "UNATTACHED",
+        None,  # Unattached
         5,  # 5V
         9,  # 9V
         12,  # 12V
@@ -140,7 +140,7 @@ class Adafruit_HUSB238:
     # PDO response codes
     _PDO_RESPONSE_CODES = [
         "NO RESPONSE",
-        "SUCCESS",
+        None,  # Success
         "INVALID COMMAND OR ARGUMENT",
         "COMMAND NOT SUPPORTED",
         "TRANSACTION FAILED, NO GOOD CRC",
@@ -217,16 +217,10 @@ class Adafruit_HUSB238:
 
     @voltage.setter
     def voltage(self, value: int) -> None:
-        """
-        PD voltage
-
-        :param value: PD selection as a voltage value
-        :type value: int
-        """
         if value not in self._VOLTAGE_TO_PDO:
             raise ValueError(f"Invalid voltage: {value}V")
         pdo_value = self._VOLTAGE_TO_PDO[value]
         self._selected_pd = pdo_value
         self._go_command = 0b00001
         if self.response != 1:
-            raise RuntimeError(f"{self._PDO_RESPONSE_CODES[self.response]}")
+            raise RuntimeError(self._PDO_RESPONSE_CODES[self.response])
