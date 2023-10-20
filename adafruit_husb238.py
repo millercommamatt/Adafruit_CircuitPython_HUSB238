@@ -181,15 +181,6 @@ class Adafruit_HUSB238:
         return _available_voltages
 
     @property
-    def source_capabilities(self) -> int:
-        """
-        Source capabilities
-        """
-        self._go_command = 0x02
-        time.sleep(0.01)  # 10 milliseconds delay
-        return self._src_pdo
-
-    @property
     def current(self) -> int:
         """
         Source current
@@ -212,7 +203,6 @@ class Adafruit_HUSB238:
 
         :rtype: int
         """
-        time.sleep(0.01)  # 10 milliseconds delay
         return self._PDO_TO_VOLTAGE[self._pd_src_voltage]
 
     @voltage.setter
@@ -222,5 +212,6 @@ class Adafruit_HUSB238:
         pdo_value = self._VOLTAGE_TO_PDO[value]
         self._selected_pd = pdo_value
         self._go_command = 0b00001
+        time.sleep(0.01)  # 10 milliseconds delay
         if self.response != 1:
             raise RuntimeError(self._PDO_RESPONSE_CODES[self.response])
